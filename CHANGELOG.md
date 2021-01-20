@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.39.3 (upcoming)
+## 0.39.3 (January 20, 2021)
 
 * [ROCK-3900] Make nginx timeout for discovery-cicd configurable
 
