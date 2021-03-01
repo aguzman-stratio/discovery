@@ -103,7 +103,7 @@ COPY --from=builder /etc/ssl/certs/java/cacerts /usr/local/jdk1.8.0_131/jre/lib/
 
 # add Metabase script and uberjar
 RUN mkdir -p bin target/uberjar && \
-    mkdir -p bin /root/.crossdata/ && \
+    mkdir -p bin /root/.crossdata/
 
 # Download prometheus jar
 RUN wget --no-verbose -O app/target/uberjar/jmx_prometheus_javaagent-0.12.0.jar \
