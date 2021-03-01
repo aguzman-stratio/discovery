@@ -104,8 +104,11 @@ COPY --from=builder /etc/ssl/certs/java/cacerts /usr/local/jdk1.8.0_131/jre/lib/
 # add Metabase script and uberjar
 RUN mkdir -p bin target/uberjar && \
     mkdir -p bin /root/.crossdata/ && \
-    wget --no-verbose -O app/target/uberjar/jmx_prometheus_javaagent-0.12.0.jar \
+
+# Download prometheus jar
+RUN wget --no-verbose -O app/target/uberjar/jmx_prometheus_javaagent-0.12.0.jar \
     http://sodio.stratio.com/repository/central/io/prometheus/jmx/jmx_prometheus_javaagent/0.12.0/jmx_prometheus_javaagent-0.12.0.jar
+
 COPY --from=builder /app/source/target/uberjar/metabase.jar /app/target/uberjar/
 ENV DISCOVERY_CICD_VERSION=1.3.0-5ad831f
 ADD http://niquel.stratio.com/repository/releases/com/stratio/discoverycicd/${DISCOVERY_CICD_VERSION}/discoverycicd-${DISCOVERY_CICD_VERSION}-uber.jar /app/target/uberjar/discovery-cicd.jar
